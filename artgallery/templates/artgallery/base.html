@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +25,10 @@
 @import url(https://fonts.googleapis.com/css?family=Bree+Serif);
 
 body {
-	background: #212121;
+
+    background-image: -webkit-radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
+    background-image: -o-radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
+    background-image: radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
 	font-size:22px;
 	line-height: 32px;
 	color: #ffffff;
@@ -33,11 +38,16 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	}
 
+    .ref::before {
+  font-weight: bold;
+  color: navajowhite;
+  content: " ";
+}
 
 h1 {
 	font-size: 60px;
 	text-align: center;
-	color: #FFF;
+	color: #ffffff;
 }
 
 h3 {
@@ -81,7 +91,10 @@ p {
 nav {
 	margin:0;
 	padding: 0;
-	background-color: #254441;
+    background-image: -webkit-radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
+    background-image: -o-radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
+    background-image: radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
+
 }
 
 #logo {
@@ -116,7 +129,9 @@ nav ul li {
 	margin: 0px;
 	display:inline-block;
 	float: left;
-	background-color: #254441;
+	background-image: -webkit-radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
+    background-image: -o-radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
+    background-image: radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.76), rgba(0, 0, 0, 0.86)), url('../images/IMG_4923_mini_3.jpg');
 	}
 
 /* Styling the links */
@@ -181,7 +196,7 @@ li > a:only-child:after { content: ''; }
 @media all and (max-width : 768px) {
 
 	#logo {
-		display: block;
+        display: block;
 		padding: 0;
 		width: 100%;
 		text-align: center;
@@ -190,6 +205,7 @@ li > a:only-child:after { content: ''; }
 
 	nav {
 		margin: 0;
+
 	}
 
 	/* Hide the navigation menu by default */
@@ -202,7 +218,7 @@ li > a:only-child:after { content: ''; }
 	/* Stylinf the toggle lable */
 	.toggle {
 		display: block;
-		background-color: #254441;
+		background-color:navajowhite;
 		padding:14px 20px;
 		color:#FFF;
 		font-size:17px;
@@ -296,7 +312,7 @@ li > a:only-child:after { content: ''; }
 </head>
 <body>
           <nav>
-        <div id="logo">Art Gallery System</div>
+        <div id="logo">Sri Art Gallery</div>
 
         <label for="drop" class="toggle">Menu</label>
         <input type="checkbox" id="drop" />
@@ -315,6 +331,10 @@ li > a:only-child:after { content: ''; }
                          <a href="{% url "logout" %}">Logout</a>
                     </li>
                 {% else %}
+                <li>
+                         <a href="{% url "home" %}">Home</a>
+
+                     </li>
 
                     <li>
                     <a href="{% url "registercustomer" %}">Registration</a>
@@ -325,7 +345,7 @@ li > a:only-child:after { content: ''; }
                 <!-- First Tier Drop Down -->
               <li>
                     <!-- First Tier Drop Down -->
-                    <label for="drop-1" class="toggle">Login +</label>
+                    <label for="drop-1" class="toggle">Login</label>
                     <a href="#">Login</a>
                     <input type="checkbox" id="drop-1"/>
                     <ul>
@@ -339,7 +359,9 @@ li > a:only-child:after { content: ''; }
                 {% endif %}
 <!--                <li><a href="#">Hostel room details</a></li>-->
 <!--                <li><a href="#">Room Status</a></li>-->
-                <li><a href="#">About</a></li>
+            <li><a href="{% url "about" %}">About</a></li>
+
+
 
 
 
@@ -349,7 +371,9 @@ li > a:only-child:after { content: ''; }
 
 
 {% block content %}
-
 {% endblock content %}
+
+
 </body>
 </html>
+

@@ -31,13 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+'artgallery.apps.ArtgalleryConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'artgallery.apps.ArtgalleryConfig',
+
+
 ]
 
 MIDDLEWARE = [
@@ -69,6 +71,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'art.wsgi.application'
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'sri@gmail.com'
+EMAIL_HOST_PASSWORD = 'abc'
 
 
 # Database

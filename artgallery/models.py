@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Customer(models.Model):
@@ -25,6 +26,55 @@ class Custpro(models.Model):
 
     def __str__(self):
         return self.customer.cus_name +' '+ self.painting_type +' '+ self.type_type
+
+
+class Orders(models.Model):
+    order_id = models.IntegerField()
+    date = models.DateField()
+    p_code = models.CharField(max_length=10)
+    p_name = models.CharField(max_length=25)
+    p_painting_choice = [('Tanjore', 'Tanjore'), ('Acrylic', 'Acrylic'), ('Oil', 'Oil'),('Pencil sketch', 'Pencil sketch')]
+    p_painting_type = models.CharField(choices=p_painting_choice, max_length=20, default=None)
+    p_type_choice = [('Flat work', 'Flat work'), ('2D', '2 Dimension'), ('3D', '3 Dimension')]
+    p_type_type = models.CharField(choices=p_type_choice, max_length=20, default=None)
+    psize_w = models.IntegerField()
+    psize_h = models.IntegerField()
+    p_price = models.IntegerField()
+    p_quantity = models.IntegerField()
+    p_totalprice = models.IntegerField()
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    status = models.CharField(max_length=20, null=True)
+
+
+    def __str__(self):
+        return self.customer.cus_name + ' ' + str(self.order_id)
+
+
+class Stock(models.Model):
+    purchase_id = models.CharField(max_length=10)
+    s_date = models.DateField()
+    sp_name = models.CharField(max_length=25)
+    sd_name = models.CharField(max_length=25)
+    sp_type = models.CharField(max_length=25)
+    s_size_w = models.CharField(max_length=10)
+    s_size_h = models.CharField(max_length=10)
+    s_price = models.IntegerField()
+    s_quantity = models.CharField(max_length=10)
+    s_totalprice = models.IntegerField()
+
+
+    def __str__(self):
+        return self.sd_name + ' ' + self.s_totalprice
+
+
+class Purchase(models.Model):
+
+    stock_id = models.SlugField(max_length=10)
+    s_quantity = models.CharField(max_length=10)
+
+
+    def __str__(self):
+        return self.stock_id + ' ' + self.s_quantity
 
 
 

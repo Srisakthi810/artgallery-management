@@ -1,0 +1,35 @@
+{% extends 'artgallery/base.html' %}
+{% block content %}
+    <h2>Purchase Details</h2>
+   {% if submitted %}
+     <h1 size="7">Purchase has been inserted! </h1>
+    {% else %}
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        <div class="text-center">
+            <label  for="purchase_id">Purchase ID: </label>
+            <input type="text" name="purchase_id" ><br>
+            <label for="s_date">Date: </label>
+            <input type="date" name="s_date" placeholder="YYYY-MM-DD"><br>
+            <label for="sp_name">Product Name: </label>
+            <input type="text" name="sp_name"><br>
+        <label  for="sd_name">Dealer name: </label>
+        <input type="text" name="sd_name"><br>
+        <label  for="sp_type">Product Type: </label>
+        <input type="text" name="sp_type"><br>
+        <label for="s_size_w">Size-Width: </label>
+        <input type="text" name="s_size_w"><br>
+            <label for="s_size_h">Size-Height: </label>
+        <input type="text" name="s_size_h"><br>
+         <label  for="s_price">Price: </label>
+        <input type="number" name="s_price"><br>
+        <label  for="s_quantity">Quantity: </label>
+        <input type="text" name="s_quantity"><br>
+        <label for="s_totalprice">Total Price: </label>
+        <input type="number" name="s_totalprice"><br>
+        </div>
+<!--        <input type="submit" value="Apply" class="btn btn-primary">-->
+        <div class="text-center"><input type="submit"  value="Submit" class="btn btn-warning"></div>
+    </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,128 @@
+<html>
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css" />
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+ <script src=" https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+ <script src=" https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+ <script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+ <script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+ <script src=" https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+  <script>
+   $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+
+            'pdfHtml5'
+        ]
+    } );
+} );
+
+  </script>
+    <style>
+        body {
+
+            background-image: -webkit-radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.96), rgba(0, 0, 0, 0.66)), url('../images/IMG_4923_mini_3.jpg');
+    background-image: -o-radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.96), rgba(0, 0, 0, 0.66)), url('../images/IMG_4923_mini_3.jpg');
+    background-image: radial-gradient(circle at 50% 50%, rgba(32, 78, 94, 0.96), rgba(0, 0, 0, 0.66)), url('../images/IMG_4923_mini_3.jpg');
+        }
+        h2 {
+   font-size: 60px;
+   text-align: center;
+            font-family: Algerian;
+   color: #ffffff;
+}
+th {
+   font-size: 15px;
+   font-family: "Comic Sans MS";
+   color: #ffffff;
+}
+
+td {
+   font-size: 15px;
+   font-family: "Comic Sans MS";
+   color: #030303;
+}
+    </style>
+
+
+    </head>
+<body>
+<div>
+    <h2>Order List</h2>
+    <table id="example" class="table table-hover">
+        <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Order id</th>
+            <th>Date</th>
+            <th>Product code</th>
+            <th>Product name</th>
+            <th>Painting choice</th>
+            <th>Painting type</th>
+            <th>Width</th>
+            <th>Height</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total price</th>
+            <th>Status</th>
+            <th>Update</th>
+            <th>Cancel</th>
+
+        </tr>
+        </thead>
+        <tbody>
+       {% for custom in admod %}
+        <tr>
+            <td>{{custom.customer.cus_name}}</td>
+            <td>{{custom.order_id}}</td>
+            <td>{{custom.date}}</td>
+            <td>{{custom.p_code}}</td>
+            <td>{{custom.p_name}}</td>
+            <td>{{custom.p_painting_type}} </td>
+            <td>{{custom.p_type_type}} </td>
+            <td>{{custom.psize_w}}</td>
+             <td>{{custom.psize_h}} </td>
+            <td>{{custom.p_price}} </td>
+            <td>{{custom.p_quantity}} </td>
+            <td>{{custom.p_totalprice}} </td>
+         <td>{{custom.p_dispatcedstatus}} </td>
+            <td>
+                        {% if custom.status is none %}
+                        <form action="{% url "sendmail" %}" method="post">
+                            {% csrf_token %}
+                            <input type="text" value="{{ custom.order_id }}" name="orderid" hidden>
+                            <input type="text" value="accept" name="decision" hidden>
+                            <input type="submit" value="accept" class="btn btn-success">
+                        </form>
+                        {% else %}
+                            Order-
+                            {{ custom.status }}
+                        {% endif %}
+            </td>
+        <td><a href="{% url "updateorder" order_id=custom.order_id %}">Update</a></td>
+            <td><form action="{% url "deleteorder" order_id=custom.order_id %}">
+
+                <input type="submit" value="Cancel" class="btn btn-danger">
+            </form></td>
+{#        <td><a href="">Delete</a></td>#}
+
+
+        </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

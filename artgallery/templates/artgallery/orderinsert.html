@@ -1,21 +1,15 @@
 
 {% extends 'artgallery/base.html' %}
-
 {% block content %}
-<div>
-    <br><h2 style="text-align: center">Customisation of product Detail</h2><br>
-    {% if submitted %}
-     <h1 size="7">We have received your order! We'll get back to you soon!</h1>
+    <h2>Order Details</h2>
+   {% if submitted %}
+     <h1 size="7">Order has been inserted! </h1>
     {% else %}
     <form method="POST" class="post-form">
         {% csrf_token %}
-
         {{ form.as_p }}
-
-
 <!--        <input type="submit" value="Apply" class="btn btn-primary">-->
         <div class="text-center"><input type="submit"  value="Submit" class="btn btn-warning"></div>
     </form>
     {% endif %}
-    </div>
 {% endblock %}

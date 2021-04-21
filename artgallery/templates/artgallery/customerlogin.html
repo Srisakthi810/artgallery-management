@@ -24,7 +24,7 @@
         <h3>Please enter correct login details!</h3>
     {% endif %}
 
-
+ <br><h2 style="text-align: center">Login</h2><br>
     <form action="{% url 'customerLogin' %}" method="POST">
         {% csrf_token %}
         <label  for="username">Username: </label>
@@ -32,7 +32,7 @@
         <label for="password">Password: </label>
         <input type="password" name="password" placeholder="Enter Password"><br><br>
 <!--        <input type="Submit" value="Login" class="btn btn-primary">-->
-        <div class="text-center"><input type="submit"  value="Login" class="btn btn-primary"></div>
+        <div class="text-center"><input type="submit"  value="Login" class="btn btn-warning"></div>
     </form>
 </div>
 

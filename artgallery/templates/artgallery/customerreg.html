@@ -3,15 +3,28 @@
 
 <div>
    {% if registered %}
-        <h1>Thanks for registering, Please Log in!</h1>
+    <body>
+        <h2>  </h2>
+        <h2>  </h2>
+        <h2>  </h2>
+        <h3 style="text-align: center">
+            <marquee scrollamount = "20" bgcolor="gray">Thanks for registering,Please Log in! </marquee>
+            </h3>
+    <h3 style="text-align: center">
+            <marquee scrollamount = "20" bgcolor="gray">Sri art gallery welcomes our valuable customer.</marquee>
+            </h3>
+    <h3 style="text-align: center">
+            <marquee scrollamount = "20" bgcolor="gray">Happy shopping!!</marquee>
+            </h3>
+        </body>
     {% else %}
-        <h1>Registration for Customer:</h1>
+        <h1>Registration</h1><br>
         <form action="" method="POST">
             {% csrf_token %}
 <!--             <div class="form-group">-->
             {{ var_customerForm.as_p }}
 <!--             </div>-->
-            <div class="text-center"><input type="submit"  value="Register" class="btn btn-primary"></div>
+            <div class="text-center"><input type="submit"  value="Register" class="btn btn-warning"></div>
 
         </form>
 {% endif %}
